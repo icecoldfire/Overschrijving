@@ -44,12 +44,15 @@ class Overschrijving:
     loc_mededeling_y = 543 - offset_y
 
     def __init__(self, **kwargs):
-        self.img = Image.open("Overschrijvingsformulier.png").convert('RGBA')
-        self.draw = ImageDraw.Draw(self.img, 'RGBA')
         # font = ImageFont.truetype(<font-file>, <font-size>)
         self.font = ImageFont.truetype("cour.ttf", 45)
         self.font_klein = ImageFont.truetype("cour.ttf", 24)
+        self.reset()
         self.set_waarde(**kwargs)
+
+    def reset(self):
+        self.img = Image.open("Overschrijvingsformulier.png").convert('RGBA')
+        self.draw = ImageDraw.Draw(self.img, 'RGBA')
 
     def set_waarde(self, datum="", bedrag="", cent="00", r_opdracht="", i_opdracht="",
                    r_besch="", b_besch="", i_besch="", mededeling=""):
@@ -79,25 +82,25 @@ class Overschrijving:
         self.schrijf_string(Overschrijving.loc_r_opdracht_x, Overschrijving.loc_r_opdracht_y, self.r_opdracht)
 
         self.schrijf_string(Overschrijving.loc_i_opdracht_x, Overschrijving.loc_i_opdracht_y, self.i_opdracht,
-                            font=self.font_klein)
+                            font=self.font_klein, max_len=Overschrijving.len_regel)
 
         self.schrijf_string(Overschrijving.loc_r_besch_x, Overschrijving.loc_r_besch_y, self.r_besch)
 
         self.schrijf_string(Overschrijving.loc_b_besch_x, Overschrijving.loc_b_besch_y, self.b_besch)
 
         self.schrijf_string(Overschrijving.loc_i_besch_x, Overschrijving.loc_i_besch_y, self.i_besch,
-                            font=self.font_klein)
+                            font=self.font_klein, max_len=Overschrijving.len_regel)
 
         self.schrijf_string(Overschrijving.loc_mededeling_x, Overschrijving.loc_mededeling_y, self.mededeling)
 
-    def schrijf_string(self, x, y, string, lengte=None, font=None):
+    def schrijf_string(self, x, y, string, lengte=None, font=None, max_len=-1):
         if not lengte:
             lengte = len(string)
         off_x = x + Overschrijving.offset_x(lengte, len(string))
         off_y = y
         char = 0
         for i in string:
-            if char == Overschrijving.len_regel or i == '\n':
+            if char == max_len or i == '\n':
                 off_y += Overschrijving.spatie_y + Overschrijving.box_y
                 off_x = x + Overschrijving.offset_x(lengte, len(string))
                 char = 0
