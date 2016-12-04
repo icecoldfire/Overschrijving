@@ -114,7 +114,7 @@ class Overschrijving:
         if not font:
             font = self.font
         # draw.text((x, y),"Sample Text",(r,g,b))
-        self.draw.text((x, y), letter, (0, 0, 0, 0), font=font)
+        self.draw.text((x, y), letter, (0, 0, 0, 255), font=font)
 
     def save(self, uit='out.png'):
         self.img.save(uit, "PNG")
