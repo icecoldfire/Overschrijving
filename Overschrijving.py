@@ -123,7 +123,8 @@ class Overschrijving:
         self.schrijf()
         self.save()
 
-
+    def get_image(self):
+        return self.img
 if __name__ == "__main__":
     overschrijving = Overschrijving(datum="041216", bedrag="1234", cent="12", r_opdracht="BE13736001704739",
                                     i_opdracht="Stijn Goethals\nSchriek 321 2180 Ekeren België",
