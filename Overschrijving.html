@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Overschrijving</title>
+</head>
+<body>
+<h1>Overschrijving</h1>
+<style>
+input, textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+button {
+    background-color: #45a049;
+}
+body {
+    background-color: #cccccc;
+}
+</style>
+<form action="/cgi-bin/web.cgi" method="get">
+    <label>Datum:</label>
+    <input name="datum" placeholder="041216">
+    <label>Bedrag:</label>
+    <input name="bedrag" placeholder="150">
+    <label>Cent:</label>
+    <input name="cent" placeholder="00">
+    <label>Rekening opdrachtgever:</label>
+    <input name="r_opdracht" placeholder="BE13736001704739">
+    <label>Info opdrachtgever:</label>
+    <textarea name="i_opdracht" placeholder="Stijn Goethals"></textarea>
+    <label>Rekening begunstigde:</label>
+    <input name="r_besch" placeholder="BE13736001704739">
+    <label>BIC begunstigde:</label>
+    <input name="b_besch" placeholder="KREDBEBB">
+    <label>Info begunstigde:</label>
+    <textarea name="i_besch" placeholder="Stijn Goethals"></textarea>
+    <label>Mededeling:</label>
+    <input name="mededeling" placeholder="Donatie">
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+</form>
+</body>
+</html>
