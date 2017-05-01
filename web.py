@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #!/usr/bin/python3
 import base64
 import io
@@ -11,15 +12,42 @@ form = cgi.FieldStorage()
 
 
 over = Overschrijving()
-datum = form["datum"].value
-bedrag = form["bedrag"].value
-cent = form["cent"].value
-r_opdracht = form["r_opdracht"].value
-i_opdracht = form["i_opdracht"].value
-r_besch = form["r_besch"].value
-b_besch = form["b_besch"].value
-i_besch = form["i_besch"].value
-mededeling = form["mededeling"].value
+try:
+    datum = form["datum"].value
+except KeyError:
+    datum = ""
+try:
+    bedrag = form["bedrag"].value
+except KeyError:
+    bedrag = ""
+try:
+    cent = form["cent"].value
+except KeyError:
+    cent = ""
+try:
+    r_opdracht = form["r_opdracht"].value
+except KeyError:
+    r_opdracht = ""
+try:
+    i_opdracht = form["i_opdracht"].value
+except KeyError:
+    i_opdracht = ""
+try:
+    r_besch = form["r_besch"].value
+except KeyError:
+    r_besch = ""
+try:
+    b_besch = form["b_besch"].value
+except KeyError:
+    b_besch = ""
+try:
+    i_besch = form["i_besch"].value
+except KeyError:
+    i_besch = ""
+try:
+    mededeling = form["mededeling"].value
+except KeyError:
+    mededeling = ""
 
 over.set_waarde(datum=datum, bedrag=bedrag, cent=cent, r_opdracht=r_opdracht, i_opdracht=i_opdracht, r_besch=r_besch,
                 b_besch=b_besch, i_besch=i_besch, mededeling=mededeling)
