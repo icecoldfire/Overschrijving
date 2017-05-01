@@ -95,6 +95,7 @@ class Overschrijving:
         self.schrijf_string(Overschrijving.loc_mededeling_x, Overschrijving.loc_mededeling_y, self.mededeling)
 
     def schrijf_string(self, x, y, string, lengte=None, font=None, max_len=-1):
+        string = string.replace("\r", "")
         if not lengte:
             lengte = len(string)
         off_x = x + Overschrijving.offset_x(lengte, len(string))
